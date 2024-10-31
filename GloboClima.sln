@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GloboClima.App", "GloboClima.App", "{E9D421F3-B731-4A0E-9ECF-01519C41B820}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GloboClima.Api", "GloboClima.Api", "{237ED62B-D1E5-4C56-8F15-35E49D9FBFBE}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A96B8CA-C92A-42EF-BD6B-6FDA1D50911A}
+	EndGlobalSection
+EndGlobal
