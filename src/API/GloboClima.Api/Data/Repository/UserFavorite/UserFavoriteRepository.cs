@@ -1,8 +1,10 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
+using GloboClima.API.Configuration.Identity.Models;
 using GloboClima.API.Data.Models;
 using System.Net;
+using System.Threading;
 
 namespace GloboClima.API.Data.Repository
 {
@@ -57,13 +59,26 @@ namespace GloboClima.API.Data.Repository
             }
         }
 
-        public async Task<IEnumerable<UserFavorite>> Buscar(string userId)
+        public async Task<IEnumerable<UserFavorite>> Buscar(Guid userId)
         {
-            var lista = await _context.QueryAsync<UserFavorite>(
-                $"USER#{userId}", Amazon.DynamoDBv2.DocumentModel.QueryOperator.Equal,
-                new object[] { "FAVORITE" })
-           .GetRemainingAsync();
+            try
+            {
+                var scanConditions = new List<ScanCondition>
+            {
+                new ScanCondition("UserId", ScanOperator.Equal, userId.ToString())
+            };
+
+            var lista = await _context.ScanAsync<UserFavorite>(scanConditions).GetRemainingAsync();
             return lista;
+
+            }
+            catch (Exception ex)
+            {
+                // Log do erro para diagnóstico
+                Console.WriteLine($"Erro ao executar a operação ScanAsync: {ex.Message}");
+                // Retorna uma lista vazia em caso de erro
+                return new List<UserFavorite>();
+            }
         }
 
         public async Task<UserFavorite?> Buscar(string userId, string nome)

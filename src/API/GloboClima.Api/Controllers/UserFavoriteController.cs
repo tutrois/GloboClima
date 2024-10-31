@@ -25,9 +25,9 @@ namespace GloboClima.API.Controllers
         [HttpGet("ListUserFavorite/{userId}")]
         [ProducesResponseType(typeof(IEnumerable<UserFavorite>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<UserFavorite>>> ListUserFavorites(string userId)
+        public async Task<ActionResult<IEnumerable<UserFavorite>>> ListUserFavorites(Guid userId)
         {
-            if (string.IsNullOrWhiteSpace(userId))
+            if (userId == Guid.Empty)
             {
                 NotificarErro("O ID do usuário não pode ser vazio ou nulo.");
                 return CustomResponse();
@@ -57,10 +57,7 @@ namespace GloboClima.API.Controllers
             if (!OperacaoValida())
                 return CustomResponse();
 
-            var favorite = new UserFavorite(viewModel.UserId)
-            {
-                NomeCidade = viewModel.NomeCidade
-            };
+            var favorite = new UserFavorite(viewModel.UserId, viewModel.NomeCidade);
 
             var result = await _userFavoriteRepository.Adicionar(favorite);
 

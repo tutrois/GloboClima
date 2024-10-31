@@ -10,29 +10,30 @@ namespace GloboClima.API.Data.Models
         {
         }
 
-        public UserFavorite(Guid userId)
+        public UserFavorite(Guid userId, string NomeCidade)
         {
-            UserId = userId;
-            PartitionKey = $"USER#{UserId}"; // Gera o valor da chave de partição
+            this.UserId = userId.ToString();
+            this.NomeCidade = NomeCidade;
+            PartitionKey = Guid.NewGuid(); // Gera o valor da chave de partição
         }
         /// <summary>
         /// Chave de partição no DynamoDB.
         /// </summary>
         [Key]
         [DynamoDBHashKey("pk")]
-        public string PartitionKey { get; set; }
+        public Guid PartitionKey { get; set; }
 
         /// <summary>
         /// Chave de ordenação no DynamoDB.
         /// </summary>
         [DynamoDBRangeKey("sk")]
-        public string SortKey { get; set; } = "FAVORITE";
+        public string SortKey { get; set; } = "USERFAVORITE";
 
         /// <summary>
         /// ID único do usuário.
         /// </summary>
         [DynamoDBProperty]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [DynamoDBProperty]
         [StringLength(100, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 3)]

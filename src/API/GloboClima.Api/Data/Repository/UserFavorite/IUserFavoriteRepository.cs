@@ -7,7 +7,7 @@ namespace GloboClima.API.Data.Repository
     {
         Task<HttpStatusCode> Adicionar(UserFavorite userFavorite);
         Task<HttpStatusCode> Atualizar(UserFavorite userFavorite);
-        Task<IEnumerable<UserFavorite>> Buscar(string userId);
+        Task<IEnumerable<UserFavorite>> Buscar(Guid userId);
         Task<UserFavorite?> Buscar(string userId, string nome);
         Task<HttpStatusCode> Deletar(UserFavorite userFavorite);
     }

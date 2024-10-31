@@ -30814,7 +30814,7 @@ html:not(.navbar-vertical-collapsed) .navbar-vertical.navbar-expand-xs .navbar-v
 }
 .navbar-top.navbar-slim .navbar-brand {
   margin-bottom: 0;
-  color: var(--phoenix-primary);
+  color: var(--phoenix-blue);
   font-size: larger;
 }
 .navbar-top.navbar-slim .navbar-nav-icons > .nav-item > .nav-link {
