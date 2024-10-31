@@ -38,7 +38,7 @@ namespace GloboClima.App.Controllers
 
             var vireModel = new HomeDashViewModel
             {
-                WhaterListResponse = result.Data
+                ListWeatherResponse = result.Data
             };
 
             return View(vireModel);

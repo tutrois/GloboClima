@@ -22,10 +22,10 @@ namespace GloboClima.API.Controllers
             _userFavoriteRepository = userFavoriteRepository;
         }
 
-        [HttpGet("ListUserFavorite")]
-        [ProducesResponseType(typeof(List<UserFavorite>), StatusCodes.Status200OK)]
+        [HttpGet("ListUserFavorite/{userId}")]
+        [ProducesResponseType(typeof(IEnumerable<UserFavorite>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<List<UserFavorite>>> ListUserFavorites(string userId)
+        public async Task<ActionResult<IEnumerable<UserFavorite>>> ListUserFavorites(string userId)
         {
             if (string.IsNullOrWhiteSpace(userId))
             {
@@ -33,9 +33,9 @@ namespace GloboClima.API.Controllers
                 return CustomResponse();
             }
 
-            var result = _userFavoriteRepository.Buscar(userId);
+            var result = await _userFavoriteRepository.Buscar(userId);
 
-            return CustomResponse(result);
+            return result == null ? NotFound() : CustomResponse(result);
         }
 
         [HttpPost]

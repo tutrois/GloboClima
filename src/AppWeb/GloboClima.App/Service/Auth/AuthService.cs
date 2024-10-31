@@ -14,13 +14,18 @@ namespace GloboClima.App.Service
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly AppSettings _settings;
+        private readonly IAuthenticationService _authenticationService;
+        private readonly IUser _user;
 
-        public AuthService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<AppSettings> _settings)
+
+        public AuthService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<AppSettings> _settings, IAuthenticationService authenticationService, IUser user)
         {
             httpClient.BaseAddress = new Uri(_settings.Value.AutenticacaoUrl);
 
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
+            _authenticationService = authenticationService;
+            _user = user;
         }
 
         public async Task<ApiResponse<UserLoginResponse>> Login(LoginUserViewModel viewModel)
@@ -86,7 +91,8 @@ namespace GloboClima.App.Service
                 IsPersistent = true
             };
 
-            await _httpContextAccessor.HttpContext!.SignInAsync(
+            await _authenticationService.SignInAsync(
+                _user.ObterHttpContext(),
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);

@@ -57,7 +57,7 @@
                 <div class="swiper-wrapper">
                 @foreach( var item in Model)
                 {
-                    var iconURL = $"https://openweathermap.org/img/wn/"+item.Meteorologia.FirstOrDefault().Icon+"@2x.png";
+                    var iconURL = $"https://openweathermap.org/img/wn/" + item.Weather.FirstOrDefault().Icon + "@2x.png";
                     <div class="swiper-slide rounded-3 overflow-hidden">
                         <div class="position-relative w-100 h-100 row">
                             <div class="col-12">
@@ -73,7 +73,7 @@
                                         <!--/.bg-holder-->
                                     </div>
                                     <div class="card-body px-5 position-relative">
-                                        <div class="badge badge-phoenix fs-10 badge-phoenix-warning mb-4"><span class="fw-bold">@item.Meteorologia.FirstOrDefault().Description</span><span class="ms-1"><img src="@iconURL" alt="Ícone do tempo" /></span></div>
+                                        <div class="badge badge-phoenix fs-10 badge-phoenix-warning mb-4"><span class="fw-bold">@item.Weather.FirstOrDefault().Description</span><span class="ms-1"><img src="@iconURL" alt="Ícone do tempo" /></span></div>
                                         <h3 class="mb-5">@item.Name  <span class=""><img src="@iconURL" alt="Ícone do tempo" /></span></h3>
                                         <p class="text-body-tertiary fw-semibold"><i class="fa-solid fa-temperature-low"></i>  Temperatura: @item.Main.Temp </p>
                                         <p class="text-body-tertiary fw-semibold"><i class="fa-solid fa-temperature-arrow-down"></i>  Minima: @item.Main.TempMin </p>

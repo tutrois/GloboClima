@@ -21,7 +21,7 @@ namespace GloboClima.API.Configuration
             services.AddScoped<IUser, AspNetUser>();
 
             services.AddSingleton<IWeatherService, WeatherService>();
-            services.AddSingleton<IUserFavoriteService, UserFavoriteService>();
+            services.AddHttpClient<IUserFavoriteService, UserFavoriteService>();
 
 
             return services;

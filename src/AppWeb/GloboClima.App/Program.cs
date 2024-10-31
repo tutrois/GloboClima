@@ -11,7 +11,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = "/login";
-        options.AccessDeniedPath = "/acesso-negado";
+        options.AccessDeniedPath = "/erro/403";
     });
 
 // Configuração dos Perfils de execução

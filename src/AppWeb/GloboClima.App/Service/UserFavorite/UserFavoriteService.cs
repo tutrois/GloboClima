@@ -3,7 +3,9 @@ using GloboClima.App.Data.Reponses;
 using GloboClima.App.Extensions;
 using GloboClima.App.ViewModels;
 using Microsoft.Extensions.Options;
+using NuGet.Common;
 using System.Net;
+using System.Net.Http.Headers;
 
 namespace GloboClima.App.Service
 {
@@ -17,8 +19,6 @@ namespace GloboClima.App.Service
 
         public UserFavoriteService(HttpClient httpClient, IOptions<AppSettings> _settings, IHttpContextAccessor httpContextAccessor, IUser appUser)
         {
-           
-
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
             _appUser = appUser;
@@ -27,6 +27,10 @@ namespace GloboClima.App.Service
 
         public async Task<ApiResponse<UserFavorite>> AddToFavoriteAsync(UserFavorite userFavorite)
         {
+            var token = _appUser.ObterUserToken();
+            _httpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
+
             var content = ObterConteudo(userFavorite);
 
             var response = await _httpClient.PostAsync("/api/UserFavorite", content);
@@ -49,6 +53,9 @@ namespace GloboClima.App.Service
 
         public async Task<ApiResponse<List<UserFavorite>>> GetListFavoritesAsync(Guid userId)
         {
+            _httpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", _appUser.ObterUserToken());
+
             var response = await _httpClient.GetAsync($"/api/UserFavorite/ListUserFavorite/{userId}");
 
             if (response.StatusCode == HttpStatusCode.NotFound) return null;
