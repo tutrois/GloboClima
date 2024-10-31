@@ -1,8 +1,8 @@
 ﻿using GloboClima.API.Configuration;
 using GloboClima.API.Configuration.ApiExternal.OpenWeatherMap.Models;
 using GloboClima.API.Configuration.Notificacoes;
-using GloboClima.API.Models;
-using GloboClima.API.Models.ViewModels;
+using GloboClima.API.Data.Models.Responses;
+using GloboClima.API.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Net.Http;

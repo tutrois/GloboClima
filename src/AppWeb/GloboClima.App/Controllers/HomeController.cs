@@ -1,6 +1,6 @@
 using GloboClima.App.Extensions;
-using GloboClima.App.Models;
 using GloboClima.App.Service;
+using GloboClima.App.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GloboClima.App.Controllers

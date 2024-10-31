@@ -1,11 +1,9 @@
 ﻿using GloboClima.App.Configuration.Authentication.ViewModels;
+using GloboClima.App.Data.Reponses;
 using GloboClima.App.Extensions;
-using GloboClima.App.Models;
+using GloboClima.App.ViewModels;
 using Microsoft.Extensions.Options;
-using NuGet.Configuration;
 using System.Net;
-using System.Net.Http.Headers;
-using System.Runtime;
 
 namespace GloboClima.App.Service
 {

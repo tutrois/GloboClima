@@ -1,5 +1,5 @@
 ﻿using GloboClima.App.Configuration.Authentication.ViewModels;
-using GloboClima.App.Models;
+using GloboClima.App.Data.Reponses;
 
 namespace GloboClima.App.Service
 {

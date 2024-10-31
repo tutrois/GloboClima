@@ -1,10 +1,8 @@
-﻿using Azure;
-using GloboClima.API.Configuration;
-using GloboClima.API.Configuration.Identity.Models;
+﻿using GloboClima.API.Configuration;
 using GloboClima.API.Configuration.Notificacoes;
-using GloboClima.API.Models;
-using GloboClima.API.Models.ViewModels;
-using GloboClima.API.Repository;
+using GloboClima.API.Data.Models;
+using GloboClima.API.Data.Repository;
+using GloboClima.API.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

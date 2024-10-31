@@ -1,14 +1,11 @@
 ﻿using GloboClima.App.Configuration.Authentication.ViewModels;
+using GloboClima.App.Extensions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.VisualStudio.TextTemplating;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Json;
-using System.IdentityModel.Tokens.Jwt;
-using GloboClima.App.Models;
 using Microsoft.Extensions.Options;
-using GloboClima.App.Extensions;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using GloboClima.App.ViewModels;
 
 namespace GloboClima.App.Service
 {
@@ -63,7 +60,7 @@ namespace GloboClima.App.Service
                 {
                     Data = new UserLoginResponse
                     {
-                        
+
                         ReponseResult = await DeserializarObjetoResponse<ResponseResult>(response)
                     }
                 };
@@ -100,5 +97,3 @@ namespace GloboClima.App.Service
         }
     }
 }
-
-

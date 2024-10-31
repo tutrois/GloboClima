@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using GloboClima.API.Configuration.Identity.Models;
 using GloboClima.API.Configuration.Identity.Data;
 using GloboClima.API.Configuration.Notificacoes;
-using GloboClima.API.Repository;
+using GloboClima.API.Data.Repository;
 
 namespace GloboClima.API.Configuration
 {

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text;
 using GloboClima.App.Extensions;
-using GloboClima.App.Models;
+using GloboClima.App.ViewModels;
 
 namespace GloboClima.App.Service
 {

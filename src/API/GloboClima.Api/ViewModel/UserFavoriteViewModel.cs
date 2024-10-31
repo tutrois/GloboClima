@@ -1,7 +1,4 @@
-﻿using Amazon.DynamoDBv2.DataModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace GloboClima.API.Models.ViewModels
+﻿namespace GloboClima.API.ViewModel
 {
     public class UserFavoriteViewModel
     {

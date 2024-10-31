@@ -1,6 +1,6 @@
 ﻿using GloboClima.App.Configuration.Authentication.ViewModels;
+using GloboClima.App.Data.Reponses;
 using GloboClima.App.Extensions;
-using GloboClima.App.Models;
 using Microsoft.Extensions.Options;
 
 namespace GloboClima.App.Service

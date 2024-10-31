@@ -1,8 +1,7 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
-using System.Collections.Concurrent;
 using System.ComponentModel.DataAnnotations;
 
-namespace GloboClima.API.Models
+namespace GloboClima.API.Data.Models
 {
     [DynamoDBTable("GloboClima")]
     public class UserFavorite

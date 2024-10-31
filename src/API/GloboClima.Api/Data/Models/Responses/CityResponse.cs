@@ -1,4 +1,4 @@
-﻿namespace GloboClima.API.Models
+﻿namespace GloboClima.API.Data.Models.Responses
 {
     public class City
     {

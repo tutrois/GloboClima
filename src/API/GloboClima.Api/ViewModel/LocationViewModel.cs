@@ -1,4 +1,4 @@
-﻿namespace GloboClima.API.Models.ViewModels
+﻿namespace GloboClima.API.ViewModel
 {
     public class LocationViewModel
     {

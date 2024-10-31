@@ -1,4 +1,4 @@
-﻿using GloboClima.App.Models;
+﻿using GloboClima.App.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GloboClima.App.Controllers

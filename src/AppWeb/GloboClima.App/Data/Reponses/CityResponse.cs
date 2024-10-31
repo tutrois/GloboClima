@@ -1,4 +1,6 @@
-﻿namespace GloboClima.App.Models
+﻿using GloboClima.App.ViewModels;
+
+namespace GloboClima.App.Data.Reponses
 {
     public class CityResponse
     {

@@ -1,4 +1,4 @@
-﻿using GloboClima.App.Models;
+﻿using GloboClima.App.Data.Reponses;
 
 namespace GloboClima.App.ViewModels
 {

@@ -1,7 +1,7 @@
-﻿using GloboClima.API.Models;
+﻿using GloboClima.API.Data.Models;
 using System.Net;
 
-namespace GloboClima.API.Repository
+namespace GloboClima.API.Data.Repository
 {
     public interface IUserFavoriteRepository
     {

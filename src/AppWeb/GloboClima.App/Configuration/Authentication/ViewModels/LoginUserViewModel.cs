@@ -1,4 +1,5 @@
-﻿using GloboClima.App.Models;
+﻿
+using GloboClima.App.ViewModels;
 using System.ComponentModel.DataAnnotations;
 
 namespace GloboClima.App.Configuration.Authentication.ViewModels

@@ -1,4 +1,4 @@
-namespace GloboClima.App.Models
+namespace GloboClima.App.ViewModels
 {
     public class ErrorViewModel
     {

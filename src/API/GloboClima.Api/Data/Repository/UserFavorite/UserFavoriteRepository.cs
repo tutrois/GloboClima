@@ -1,20 +1,16 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
-using GloboClima.API.Configuration.Identity.Models;
-using GloboClima.API.Configuration.Jwt.Models;
-using GloboClima.API.Models;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using GloboClima.API.Data.Models;
 using System.Net;
-using System.Threading;
 
-namespace GloboClima.API.Repository
+namespace GloboClima.API.Data.Repository
 {
     public class UserFavoriteRepository : IUserFavoriteRepository
     {
         private readonly IDynamoDBContext _context;
 
-        public UserFavoriteRepository( IDynamoDBContext context)
+        public UserFavoriteRepository(IDynamoDBContext context)
         {
             _context = context;
         }

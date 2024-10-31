@@ -1,4 +1,5 @@
 ﻿using GloboClima.App.Configuration.Authentication.ViewModels;
+using GloboClima.App.Data.Reponses;
 using GloboClima.App.Extensions;
 using GloboClima.App.Service;
 using GloboClima.App.ViewModels;
@@ -50,7 +51,7 @@ namespace GloboClima.App.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (!ModelState.IsValid) return View();
 
-            var userFavorite = new Models.UserFavorite()
+            var userFavorite = new UserFavorite()
             {
                 UserId = _appUser.ObterUserId(),
                 NomeCidade = viewModel.Nome,
