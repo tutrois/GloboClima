@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "lottie-web@5.12.2",
+      "destination": "wwwroot/lib/template-phoenix/vendors/lottie-web/"
+    }
+  ]
+}

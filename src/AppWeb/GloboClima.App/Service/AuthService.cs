@@ -1,0 +1,104 @@
+﻿using GloboClima.App.Configuration.Authentication.ViewModels;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.VisualStudio.TextTemplating;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
+using System.IdentityModel.Tokens.Jwt;
+using GloboClima.App.Models;
+using Microsoft.Extensions.Options;
+using GloboClima.App.Extensions;
+
+namespace GloboClima.App.Service
+{
+    public class AuthService : BaseService, IAuthService
+    {
+        private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly AppSettings _settings;
+
+        public AuthService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<AppSettings> _settings)
+        {
+            httpClient.BaseAddress = new Uri(_settings.Value.AutenticacaoUrl);
+
+            _httpClient = httpClient;
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        public async Task<ApiResponse<UserLoginResponse>> Login(LoginUserViewModel viewModel)
+        {
+            var loginContent = ObterConteudo(viewModel);
+
+            var response = await _httpClient.PostAsync("/api/login/Entrar", loginContent);
+
+            // Verifique se a resposta foi bem-sucedida antes de tentar ler o conteúdo
+            if (!TratarErrosResponse(response))
+            {
+                var teste = await response.Content.ReadAsStringAsync();
+
+                return new ApiResponse<UserLoginResponse>
+                {
+                    Data = new UserLoginResponse
+                    {
+                        ReponseResult = await DeserializarObjetoResponse<ResponseResult>(response)
+                    }
+                };
+            }
+
+            return await DeserializarObjetoResponse<ApiResponse<UserLoginResponse>>(response);
+        }
+
+        public async Task<ApiResponse<UserLoginResponse>> Register(RegisterUserViewModel viewModel)
+        {
+            var registerContent = ObterConteudo(viewModel);
+
+            var response = await _httpClient.PostAsync("/api/login/Registrar", registerContent);
+
+            // Verifique se a resposta foi bem-sucedida antes de tentar ler o conteúdo
+            if (!TratarErrosResponse(response))
+            {
+                var teste = await DeserializarObjetoResponse<ResponseResult>(response);
+                return new ApiResponse<UserLoginResponse>
+                {
+                    Data = new UserLoginResponse
+                    {
+                        
+                        ReponseResult = await DeserializarObjetoResponse<ResponseResult>(response)
+                    }
+                };
+            }
+
+            return await DeserializarObjetoResponse<ApiResponse<UserLoginResponse>>(response);
+
+        }
+
+        public async Task DoLogin(ApiResponse<UserLoginResponse> resposta)
+        {
+            var token = FormatToken(resposta.Data.AccessToken);
+
+            var claims = new List<Claim>();
+            claims.Add(new Claim("JWT", resposta.Data.AccessToken));
+            claims.AddRange(token.Claims);
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var authProperties = new AuthenticationProperties
+            {
+                ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8),
+                IsPersistent = true
+            };
+
+            await _httpContextAccessor.HttpContext!.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
+        }
+        public static JwtSecurityToken FormatToken(string jwtToken)
+        {
+            return new JwtSecurityTokenHandler().ReadToken(jwtToken) as JwtSecurityToken;
+        }
+    }
+}
+
+

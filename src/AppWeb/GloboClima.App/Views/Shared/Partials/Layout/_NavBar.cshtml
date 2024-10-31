@@ -1,0 +1,91 @@
+﻿@using GloboClima.App.Extensions
+@inject IUser AppUser
+
+@{
+}
+
+<nav class="navbar navbar-top navbar-slim justify-content-between fixed-top navbar-expand-lg" id="navbarTopSlim">
+    <script>
+        var navbarStyle = window.config.config.phoenixNavbarStyle;
+        if (navbarStyle && navbarStyle !== 'transparent') {
+            document.querySelector('body').classList.add(`navbar-${navbarStyle}`);
+        }
+    </script>
+    <!-- Nav Bar Logo -->
+    <div class="navbar-logo">
+        <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+
+        @if (AppUser.EstaAutenticado())
+        {
+            <a class="navbar-brand navbar-brand" asp-action="Index" asp-controller="HomeDash"> <span class="text-body-highlight d-none d-sm-inline">Clima</span></a>
+        }
+        else
+        {
+            <a class="navbar-brand navbar-brand" asp-action="Index" asp-controller="Home"> <span class="text-body-highlight d-none d-sm-inline">Clima</span></a>
+        }
+    </div>
+    <!-- Nav Bar Header -->
+    <div class="collapse navbar-collapse navbar-top-collapse order-1 order-lg-0 justify-content-center" id="navbarTopCollapse">
+        <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
+            @if (AppUser.EstaAutenticado())
+            {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle lh-1" asp-action="Index" asp-controller="HomeDash"><span class="uil fs-8 me-2" data-feather="home"></span>Inicio</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle lh-1" asp-action="Index" asp-controller="Home"><span class="uil fs-8 me-2" data-feather="home"></span>Inicio</a>
+                </li>
+            }
+           @*  <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-8 me-2" data-feather="book"></span>Relatório</a>
+                <ul class="dropdown-menu navbar-dropdown-caret">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Relatorio" data-bs-toggle="" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <span class="nav-link-text">Visualizar Relatórios</span>
+                            </div>
+                        </a>
+                        <!-- more inner pages-->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="CriarRelatorio" asp-controller="Relatorio" data-bs-toggle="" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <span class="nav-link-text">Gerar Relatório</span>
+                            </div>
+                        </a>
+                        <!-- more inner pages-->
+                    </li>
+                </ul>
+            </li> *@
+        </ul>
+    </div>
+    <!-- Nav Bar Aux -->
+    <ul class="navbar-nav navbar-nav-icons flex-row">
+        <!-- Light/Dark -->
+        <li class="nav-item">
+            <div class="theme-control-toggle fa-ion-wait pe-2 theme-control-toggle-slim">
+                <input class="form-check-input ms-0 theme-control-toggle-input" id="themeControlToggle" type="checkbox" data-theme-control="phoenixTheme" value="dark" />
+                <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Trocar Tema"><span class="icon me-1 d-none d-sm-block" data-feather="moon"></span><span class="fs-9 fw-bold">Dark</span></label>
+                <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Trocar Tema"><span class="icon me-1 d-none d-sm-block" data-feather="sun"></span><span class="fs-9 fw-bold">Light</span></label>
+            </div>
+        </li>
+       <partial name="Partials/Layout/_LoginPartial"/>
+    </ul>
+</nav>
+
+<script>
+    var body = document.querySelector('body');
+    var navbarTopSlim = document.querySelector('#navbarTopSlim');
+    var navbarVertical = document.querySelector('.navbar-vertical');
+    var navbarTop = document.querySelector('.navbar-top');
+    var documentElement = document.documentElement;
+
+    navbarVertical.remove();
+    navbarTopSlim.removeAttribute('style');
+    navbarTop.setAttribute('data-navbar-appearance', 'darker');
+    documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+    documentElement.setAttribute('data-navigation-type', 'horizontal');
+</script>

@@ -7,9 +7,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GloboClima.App", "GloboClim
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GloboClima.Api", "GloboClima.Api", "{237ED62B-D1E5-4C56-8F15-35E49D9FBFBE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GloboClima.App", "src\AppWeb\GloboClima.App\GloboClima.App.csproj", "{AFEF19F9-4723-45DC-BF31-2F6D26F89F5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GloboClima.API", "src\API\GloboClima.Api\GloboClima.API.csproj", "{08CA22D0-B606-41BB-A953-6C4C4ABDEF42}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFEF19F9-4723-45DC-BF31-2F6D26F89F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFEF19F9-4723-45DC-BF31-2F6D26F89F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFEF19F9-4723-45DC-BF31-2F6D26F89F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFEF19F9-4723-45DC-BF31-2F6D26F89F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08CA22D0-B606-41BB-A953-6C4C4ABDEF42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CA22D0-B606-41BB-A953-6C4C4ABDEF42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CA22D0-B606-41BB-A953-6C4C4ABDEF42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CA22D0-B606-41BB-A953-6C4C4ABDEF42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AFEF19F9-4723-45DC-BF31-2F6D26F89F5A} = {E9D421F3-B731-4A0E-9ECF-01519C41B820}
+		{08CA22D0-B606-41BB-A953-6C4C4ABDEF42} = {237ED62B-D1E5-4C56-8F15-35E49D9FBFBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3A96B8CA-C92A-42EF-BD6B-6FDA1D50911A}

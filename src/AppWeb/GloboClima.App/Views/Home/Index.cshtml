@@ -1,0 +1,117 @@
+﻿@model List<WeatherResponse>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- ============================================-->
+<!-- <section> begin ============================-->
+<section class="overflow-hidden rotating-earth-container " style="padding-top:0rem !important;">
+
+    <div class="container-small px-lg-7 px-xxl-3">
+        <div class="row">
+            <div class="col-lg-5 text-center text-lg-start">
+                <h2 class="mb-2 lh-base">Descubra o Mundo com</h2>
+                <h1 class="fs-4 fs-sm-2 mb-3 text-gradient-info fw-black">Globo Clima</h1>
+                <p class="mb-10">Explore dados climáticos e informações essenciais sobre países. Salve suas cidades favoritas e mantenha-se atualizado com as informações que importam para você.</p>
+                <div class="row gy-6">
+                    <div class="col-12 text-center text-lg-start">
+                        <div class="input-group rounded-2 border">
+                            <div class="form-icon-container flex-1 d-flex align-items-center" data-fa-transform="down-1">
+                                <span class="fa-solid fa-location-dot form-icon text-danger-light"></span>
+                                <input class="form-control form-icon-input bg-transparent border-0 outline-none fs-8 fs-md-7 text-secondary-light" type="text" placeholder="Buscar Destino">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="position-relative rotating-earth">
+                    <div class="lottie d-dark-none" id="lottie-container" style="width: 57rem;height: 35rem;transform: translate3d(0px, 0px, 0px);"></div>
+                    <div class="lottie d-light-none" id="lottie-container-dark" style="width: 57rem;height: 35rem;transform: translate3d(0px, 0px, 0px);"></div>
+                    <img class="position-absolute d-dark-none" src="~/lib/template-phoenix/assets/img/spot-illustrations/earth-plane.png" alt="" />
+                    <img class="position-absolute d-light-none" src="~/lib/template-phoenix/assets/img/spot-illustrations/earth-plane-dark.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>  
+    <!-- end of .container-->
+</section>
+
+<!-- <section> close ============================-->
+<!-- ============================================-->
+    <section class="pb-7 pt-0 overflow-x-hidden">
+    <div class="bg-holder d-none d-xl-block" style="background-image:url('@Url.Content("~/lib/template-phoenix/assets/img/bg/bg-left-31.png")');background-size:22%;background-position:left;z-index:1;">
+    </div>
+    <!--/.bg-holder-->
+
+    <div class="bg-holder d-none d-xl-block" style="background-image:url('@Url.Content("~/lib/template-phoenix/assets/img/bg/bg-right-31.png")');background-size:15%;background-position:right bottom;z-index:1;">
+    </div>
+    <!--/.bg-holder-->
+        <div class="container-medium text-center position-relative z-2">
+        <h3 class="mb-2 text-body-emphasis">Inicie sua Exploração!</h3>
+        <p class="mb-0 text-body-tertiary mb-13">Não espere mais! Comece agora a explorar o clima e as informações dos países.</p>
+        </div>
+        <div class="swiper-theme-container swiper-zooming-slider">
+            <div class="swiper-container theme-slider" data-swiper='{"loop":true,"slidesPerView":1.3,"spaceBetween":32,"speed":2000,"autoplay":true,"centeredSlides":true,"simulateTouch":false,"breakpoints":{"540":{"slidesPerView":1.5},"768":{"slidesPerView":1.8},"1200":{"slidesPerView":2},"1530":{"slidesPerView":2.8}}}'>
+                <div class="swiper-wrapper">
+                @foreach( var item in Model)
+                {
+                    var iconURL = $"https://openweathermap.org/img/wn/"+item.Meteorologia.FirstOrDefault().Icon+"@2x.png";
+                    <div class="swiper-slide rounded-3 overflow-hidden">
+                        <div class="position-relative w-100 h-100 row">
+                            <div class="col-12">
+                                <div class="card border h-100 w-100 overflow-hidden">
+                                    <div class="bg-holder d-block bg-card" style="background-image:url('@Url.Content("~/lib/template-phoenix/assets/img/spot-illustrations/32.png")');background-position: top right;"></div>
+                                    <!--/.bg-holder-->
+                                    <div class="d-dark-none">
+                                        <div class="bg-holder d-none d-sm-block d-xl-none d-xxl-block bg-card" style="background-image:url('@Url.Content("~/lib/template-phoenix/assets/img/spot-illustrations/21.png"));background-position: bottom right; background-size: auto;"></div>
+                                        <!--/.bg-holder-->
+                                    </div>
+                                    <div class="d-light-none">
+                                        <div class="bg-holder d-none d-sm-block d-xl-none d-xxl-block bg-card" style="background-image:url('@Url.Content("~/lib/template-phoenix/assets/img/spot-illustrations/dark_21.png"));background-position: bottom right; background-size: auto;"></div>
+                                        <!--/.bg-holder-->
+                                    </div>
+                                    <div class="card-body px-5 position-relative">
+                                        <div class="badge badge-phoenix fs-10 badge-phoenix-warning mb-4"><span class="fw-bold">@item.Meteorologia.FirstOrDefault().Description</span><span class="ms-1"><img src="@iconURL" alt="Ícone do tempo" /></span></div>
+                                        <h3 class="mb-5">@item.Name  <span class=""><img src="@iconURL" alt="Ícone do tempo" /></span></h3>
+                                        <p class="text-body-tertiary fw-semibold"><i class="fa-solid fa-temperature-low"></i>  Temperatura: @item.Main.Temp </p>
+                                        <p class="text-body-tertiary fw-semibold"><i class="fa-solid fa-temperature-arrow-down"></i>  Minima: @item.Main.TempMin </p>
+                                        <p class="text-body-tertiary fw-semibold"><i class="fa-solid fa-temperature-arrow-up"></i>  Máxima: @item.Main.TempMax </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+            <div class="swiper-nav">
+                <div class="swiper-button-next"><span class="fas fa-chevron-right text-primary" data-fa-transform="shrink-3"></span></div>
+                <div class="swiper-button-prev"><span class="fas fa-chevron-left text-primary" data-fa-transform="shrink-3"></span></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Caminho da animação JSON
+        var animationPath = "@Url.Content("~/lib/template-phoenix/assets/img/animated-icons/rotating-earth.json")";
+        var animationPathDark = "@Url.Content("~/lib/template-phoenix/assets/img/animated-icons/rotating-earth-dark.json")";
+
+        // Carregar a animação usando Lottie
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg', // Renderer SVG para melhor qualidade
+            loop: true,
+            autoplay: true,
+            path: animationPath // Caminho da animação
+        });
+
+        // Carregar a animação usando Lottie
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-container-dark'),
+            renderer: 'svg', // Renderer SVG para melhor qualidade
+            loop: true,
+            autoplay: true,
+            path: animationPathDark // Caminho da animação
+        });
+    </script>

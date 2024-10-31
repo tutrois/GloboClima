@@ -1,0 +1,60 @@
+﻿@using GloboClima.App.Extensions
+@inject IUser AppUser
+
+<ul class="navbar-nav">
+    @if (AppUser.EstaAutenticado())
+    {
+        <!-- Nav Bar User -->
+        <li class="nav-item dropdown">
+            <a class="nav-link lh-1 pe-0 white-space-nowrap" id="navbarDropdownUser" href="#!" role="button" data-bs-toggle="dropdown" aria-haspopup="true" data-bs-auto-close="outside" aria-expanded="false">@AppUser.ObterUserEmail()! <span class="fa-solid fa-chevron-down fs-10"></span></a>
+            <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border" aria-labelledby="navbarDropdownUser">
+                <div class="card position-relative border-0">
+                    <div class="card-body p-0">
+                        <div class="text-center pt-4 pb-3">
+                            <div class="avatar avatar-xl ">
+                                <img class="rounded-circle " src="~/lib/template-phoenix/assets/img/team/72x72/25.webp" alt="" />
+                            </div>
+                            <h6 class="mt-2 text-body-emphasis">@AppUser.ObterUserEmail()</h6>
+                        </div>
+                    </div>
+                    <div class="card-footer p-0 border-top border-translucent">
+                        <ul class="nav d-flex flex-column my-3">
+                            <li class="nav-item">
+                                <a class="nav-link px-3" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    <span class="me-2 text-body" data-feather="settings"></span>Configuração
+                                </a>
+                            </li>
+                        </ul>
+                        <hr />
+                        <div class="px-3">
+                            <form method="get" class="form-inline" asp-controller="Auth" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button type="submit" class="btn btn-phoenix-secondary d-flex flex-center w-100"><span class="me-2" data-feather="log-out"> </span>Sair</button>
+                            </form>
+                        </div>
+                        <div class="my-2 text-center fw-bold fs-10 text-body-quaternary">
+                            <a class="text-body-quaternary me-1" href="#!">Política de Privacidade</a>&bull;
+                            <a class="text-body-quaternary mx-1" href="#!">Termos</a>&bull;
+                            <a class="text-body-quaternary ms-1" href="#!">Cookies</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Auth" asp-action="Register">
+                <span class="nav-link-text">Registrar</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Auth" asp-action="Login">
+                <span class="nav-link-text">Login</span>
+            </a>
+           
+        </li>
+    }
+</ul>
+
+
