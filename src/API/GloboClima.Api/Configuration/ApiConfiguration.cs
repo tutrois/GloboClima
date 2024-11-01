@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using GloboClima.API.Configuration.ApiExternal.OpenWeatherMap.Models;
+using System.Reflection;
 
 namespace GloboClima.API.Configuration
 {
@@ -34,6 +35,9 @@ namespace GloboClima.API.Configuration
 
             // Configuração de Injeção de Dependências
             builder.Services.ResolveDependencies();
+
+            //Configurações AWS Lambda
+            builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
             return builder;
         }
@@ -88,6 +92,9 @@ namespace GloboClima.API.Configuration
 
             // Configurações do Swagger
             builder.Services.AddSwaggerGen(options => {
+
+                var arquivoXlm = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, arquivoXlm));
                 options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
                 {
                     Description = "Forneça o token JWT no formato: 'Bearer {seu_token}'",

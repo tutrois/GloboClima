@@ -22,11 +22,15 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseCors("Production");
 }
 
 // Redireciona requisições HTTP para HTTPS, garantindo criptografia dos dados
 app.UseHttpsRedirection();
+
+app.MapGet("/", () => "API Globo Clima iniciou corretamente e contém o swagger habilitado.");
 
 app.UseAuthentication();
 
