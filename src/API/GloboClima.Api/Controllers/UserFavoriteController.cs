@@ -41,7 +41,7 @@ namespace GloboClima.API.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(UserFavorite), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> AddToUserFavorites([FromBody] UserFavoriteViewModel viewModel)
+        public async Task<ActionResult<UserFavorite>> AddToUserFavorites([FromBody] UserFavoriteViewModel viewModel)
         {
             if (!ModelState.IsValid)
                 return CustomResponse();
@@ -64,7 +64,7 @@ namespace GloboClima.API.Controllers
             if (result != System.Net.HttpStatusCode.OK)
                 return CustomResponse(result);
 
-            return CustomResponse(result);
+            return CustomResponse(favorite);
         }
     }
 }

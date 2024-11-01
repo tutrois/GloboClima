@@ -65,7 +65,8 @@ namespace GloboClima.API.Data.Repository
             {
                 var scanConditions = new List<ScanCondition>
             {
-                new ScanCondition("UserId", ScanOperator.Equal, userId.ToString())
+                new ScanCondition("UserId", ScanOperator.Equal, userId.ToString()),
+                new ScanCondition("SortKey", ScanOperator.Equal, new UserFavorite().SortKey)
             };
 
             var lista = await _context.ScanAsync<UserFavorite>(scanConditions).GetRemainingAsync();
