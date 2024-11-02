@@ -5,7 +5,7 @@ Bem-vindo ao projeto GloboClima, uma aplicação desenvolvida para oferecer aos 
 
 Este sistema foi criado com uma arquitetura backend .NET CORE 8 REST API e uma interface WEB APP MVC responsiva para exibição e interação com os dados.
 
-![Imagem do Dash]([https://exemplo.com/logo.png](https://raw.githubusercontent.com/tutrois/GloboClima/refs/heads/master/src/AppWeb/GloboClima.App/wwwroot/lib/template-phoenix/assets/img/DashBordApp.png))
+![Imagem do Dash](https://raw.githubusercontent.com/tutrois/GloboClima/refs/heads/master/src/AppWeb/GloboClima.App/wwwroot/lib/template-phoenix/assets/img/DashBordApp.png)](https://github.com/tutrois/GloboClima/blob/master/src/AppWeb/GloboClima.App/wwwroot/lib/template-phoenix/assets/img/DashBordApp.png)
 
 ---
 
