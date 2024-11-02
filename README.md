@@ -5,8 +5,15 @@ Bem-vindo ao projeto GloboClima, uma aplicação desenvolvida para oferecer aos 
 
 Este sistema foi criado com uma arquitetura backend .NET CORE 8 REST API e uma interface WEB APP MVC responsiva para exibição e interação com os dados.
 
-URL API: https://zjruebwy7opiqotbuz7jcpddsy0rznwk.lambda-url.sa-east-1.on.aws/
+![Imagem do Dash]([https://exemplo.com/logo.png](https://raw.githubusercontent.com/tutrois/GloboClima/refs/heads/master/src/AppWeb/GloboClima.App/wwwroot/lib/template-phoenix/assets/img/DashBordApp.png))
 
+---
+
+## URLs Para Teste
+
+- **URL API**: https://zjruebwy7opiqotbuz7jcpddsy0rznwk.lambda-url.sa-east-1.on.aws/
+- **URL APP**: https://globoclima.azurewebsites.net/
+  
 ---
 
 ## Funcionalidades
